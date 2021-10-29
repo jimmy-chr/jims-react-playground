@@ -1,7 +1,6 @@
 # jims-react-playground
 
 TODO
-_. webpack + npm run start + npm run build
 _. react paginas
 _. conventional commit
 _. react router
@@ -12,6 +11,6 @@ _. api graphql
 _. unit testing
 _. cypress testing
 _. coverage
-_. aws
+\_. aws
 \_. docker
 \_ deploy pipeline

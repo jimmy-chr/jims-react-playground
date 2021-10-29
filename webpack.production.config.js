@@ -4,15 +4,10 @@ const path = require("path");
 module.exports = {
   entry: path.join(__dirname, "src", "index.tsx"),
   output: { path: path.join(__dirname, "dist"), filename: "index.bundle.js" },
-  mode: process.env.NODE_ENV || "development",
+  mode: process.env.NODE_ENV || "production",
   resolve: { extensions: [".tsx", ".ts", ".js"] },
   devServer: {
     static: "dist",
-    hot: true,
-    open: true,
-    client: {
-      overlay: true,
-    },
   },
   module: {
     rules: [
