@@ -10,7 +10,7 @@ enum MenuItems {
 
 const App = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>(
-    MenuItems.SemanticUiPage1
+    MenuItems.SemanticUiPage2
   );
 
   const onMenuClick = (
