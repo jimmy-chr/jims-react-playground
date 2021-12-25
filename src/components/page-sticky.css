@@ -1,0 +1,14 @@
+.sticky-wrapper {
+  position: relative;
+  background: white;
+  height: 10rem; /* We need to change this value */
+}
+
+.sticky .sticky-inner {
+  position: fixed;
+  background: white;
+  width: 100%;
+  height: 10rem;
+  top: 0;
+  z-index: 3;
+}
