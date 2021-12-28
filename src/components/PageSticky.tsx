@@ -4,9 +4,20 @@ import * as S from "./page-sticky.styles";
 import StickyComponent from "./StickyComponent/StickyComponent";
 import "./page-sticky.css";
 
+const StickyStyledComponent = React.forwardRef(
+  (props: { isSticky: boolean }, ref) => {
+    const { isSticky } = props;
+    return (
+      <S.Wrapper isSticky={isSticky}>
+        <h1>Sticky with hooks and styled components (not working yet)</h1>
+      </S.Wrapper>
+    );
+  }
+);
+
 const PageWithSticky = () => {
-  const [isSticky, setSticky] = useState(false);
-  const ref = useRef<HTMLInputElement>(null);
+  const [isSticky, setSticky] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
   const handleScroll = () => {
     if (ref.current) {
       setSticky(ref.current.getBoundingClientRect().top <= 0);
@@ -25,12 +36,24 @@ const PageWithSticky = () => {
     <Container>
       <div>PageWithSticky</div>
 
-      <div className={`sticky-wrapper${isSticky ? " sticky" : ""}`} ref={ref}>
-        <StickyComponent />
-      </div>
+      <StickyStyledComponent isSticky={isSticky} ref={ref} />
 
       <div>
         <p>Overflowing text</p>
+
+        <p>
+          Arcu bibendum at varius vel pharetra vel turpis nunc. Consectetur
+          adipiscing elit ut aliquam purus sit amet. Risus commodo viverra
+          maecenas accumsan lacus. Commodo elit at imperdiet dui accumsan sit
+          amet. Sit amet consectetur adipiscing elit ut aliquam. Amet purus
+          gravida quis blandit turpis cursus. Aliquam malesuada bibendum arcu
+          vitae elementum. Rhoncus dolor purus non enim. Feugiat nibh sed
+          pulvinar proin gravida hendrerit. Aliquam eleifend mi in nulla. Diam
+          vulputate ut pharetra sit amet aliquam id. Sagittis vitae et leo duis.
+          Quam quisque id diam vel quam elementum pulvinar etiam. Justo laoreet
+          sit amet cursus sit amet dictum sit.
+        </p>
+
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit
@@ -46,6 +69,9 @@ const PageWithSticky = () => {
           condimentum vitae sapien pellentesque habitant morbi tristique.
         </p>
 
+        <div className={`sticky-wrapper${isSticky ? " sticky" : ""}`} ref={ref}>
+          <StickyComponent />
+        </div>
         <p>
           Cursus sit amet dictum sit amet justo donec. Proin sed libero enim sed
           faucibus turpis. Orci a scelerisque purus semper eget duis. Aliquet
@@ -58,7 +84,10 @@ const PageWithSticky = () => {
           condimentum lacinia quis vel eros donec. Tortor dignissim convallis
           aenean et tortor at risus.
         </p>
-        <S.StickyStyle>Sticky with only css code</S.StickyStyle>
+        <S.StickyStyle>
+          <h1>Sticky with only css code in a styled component</h1>
+        </S.StickyStyle>
+
         <p>
           Scelerisque eleifend donec pretium vulputate sapien. Eu non diam
           phasellus vestibulum. Imperdiet sed euismod nisi porta lorem mollis
@@ -73,19 +102,6 @@ const PageWithSticky = () => {
           vestibulum lorem sed risus ultricies tristique. Duis tristique
           sollicitudin nibh sit amet commodo nulla facilisi nullam. Malesuada
           fames ac turpis egestas integer eget aliquet nibh.
-        </p>
-
-        <p>
-          Arcu bibendum at varius vel pharetra vel turpis nunc. Consectetur
-          adipiscing elit ut aliquam purus sit amet. Risus commodo viverra
-          maecenas accumsan lacus. Commodo elit at imperdiet dui accumsan sit
-          amet. Sit amet consectetur adipiscing elit ut aliquam. Amet purus
-          gravida quis blandit turpis cursus. Aliquam malesuada bibendum arcu
-          vitae elementum. Rhoncus dolor purus non enim. Feugiat nibh sed
-          pulvinar proin gravida hendrerit. Aliquam eleifend mi in nulla. Diam
-          vulputate ut pharetra sit amet aliquam id. Sagittis vitae et leo duis.
-          Quam quisque id diam vel quam elementum pulvinar etiam. Justo laoreet
-          sit amet cursus sit amet dictum sit.
         </p>
 
         <p>
